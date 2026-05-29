@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MarkItDown</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>MarkItDown</h1>
+      <p class="subtitle">Convert files and URLs to Markdown — runs locally.</p>
+    </header>
+
+    <section id="dropzone" class="dropzone" tabindex="0" role="button"
+             aria-label="Drag and drop a file, or click to browse">
+      <p class="dropzone-text">Drag &amp; drop a file here</p>
+      <p class="dropzone-hint">or</p>
+      <button type="button" id="browse-btn" class="btn">Browse files</button>
+      <input type="file" id="file-input" hidden />
+    </section>
+
+    <div class="url-row">
+      <input type="url" id="url-input" class="url-input"
+             placeholder="…or paste a URL (web page, YouTube, etc.)" />
+      <button type="button" id="url-btn" class="btn">Convert</button>
+    </div>
+
+    <div id="error" class="error" hidden></div>
+
+    <div id="spinner" class="spinner-row" hidden>
+      <span class="spinner" aria-hidden="true"></span>
+      <span>Converting… large files may take a moment.</span>
+    </div>
+
+    <section id="output-section" hidden>
+      <textarea id="output" class="output" readonly spellcheck="false"></textarea>
+      <div class="actions">
+        <button type="button" id="copy-btn" class="btn">Copy</button>
+        <button type="button" id="download-btn" class="btn">Download .md</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
